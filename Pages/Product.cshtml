@@ -1,0 +1,22 @@
+﻿@page "{urlSlug}"
+@model ProductModel
+@{
+    ViewData["Title"] = Model.Product.Name;
+}
+
+<div class="row">
+    <div class="col">
+        <img id="product-image" class="d-block w-60" src="@Model.Product.ImageUrl" alt="@Model.Product.Name">
+    </div>
+    <div class="col mb-2">
+        <h3>@Model.Product.Name</h3>
+        <p>Art.nr: @Model.Product.ArticleNumber</p>
+        <p>@Model.Product.Description</p>
+        <h4>@Model.Product.Price SEK</h4>
+        <form method="post">
+            <input type="hidden" asp-for="Product.Id" />
+            <button class="btn btn-primary">Köp</button>
+        </form>
+    </div>
+</div>
+<vc:recommended-products products="Model.ProductList"></vc:recommended-products>

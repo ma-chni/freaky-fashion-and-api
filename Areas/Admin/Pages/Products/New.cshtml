@@ -1,0 +1,70 @@
+﻿@page
+@model FreakyFashion.Areas.Admin.Pages.Products.NewModel
+@{
+    ViewData["Title"] = "Lägg till produkt";
+}
+
+<h3 class="mt-3">Ny produkt</h3>
+<form method="post">
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Namn</label>
+                <input asp-for="Product.Name" class="form-control" placeholder="Ange produkt" />
+                <span class="text-danger" asp-validation-for="Product.Name"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Artikelnummer</label>
+                <input asp-for="Product.ArticleNumber" class="form-control" placeholder="Ange artikelnummer" />
+                <span class="text-danger" asp-validation-for="Product.ArticleNumber"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Beskrivning</label>
+                <textarea asp-for="Product.Description" class="form-control"></textarea>
+                <span class="text-danger" asp-validation-for="Product.Description"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-2">
+            <div class="form-group">
+                <label>Kategori</label>
+                <select asp-for="CategoryViewModel.Id"
+                        asp-items="Model.CategoryViewModel.CategoryList"
+                        class="form-control">
+                    <option>Välj kategori</option>
+                </select>
+                <span class="text-danger" asp-validation-for="CategoryViewModel.Id"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Pris</label>
+                <input asp-for="Product.Price" class="form-control" placeholder="Ange pris" />
+                <span class="text-danger" asp-validation-for="Product.Price"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label>Bild</label>
+                <input asp-for="Product.ImageUrl" class="form-control" placeholder="Ange URL"  />
+                <span class="text-danger" asp-validation-for="Product.ImageUrl"></span>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary mb-3">
+        Lägg till
+    </button>
+</form>

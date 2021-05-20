@@ -1,0 +1,15 @@
+﻿@using FreakyFashion.Entities
+@model List<Category>
+
+<div class="card-deck">
+    @foreach (var category in Model.Take(3))
+    {
+        <div class="card bg-white col mt-4" style="max-width: 31rem; height:200px; line-height:150px;">
+            <div class="card-body">
+                <a id="category-btn" asp-page="/Category" asp-route-name="@category.Name">
+                <p class="card-title text-center">@category.Name</p>
+                </a>
+            </div>
+        </div>
+    }
+</div>

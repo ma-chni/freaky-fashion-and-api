@@ -1,0 +1,15 @@
+﻿@using FreakyFashion.Entities
+@model List<Category>
+
+<div class="col-md-3 mb-md-0" id="footer-container">
+    <h5 class="text-uppercase">Categorier</h5>
+
+    <ul class="list-unstyled">
+        @foreach (var category in Model)
+        {
+            <li>
+                <a asp-page="/Category" asp-route-name="@category.Name"><span class="nice-color">@category.Name</span></a>
+            </li>
+        }
+    </ul>
+</div>

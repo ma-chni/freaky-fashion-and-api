@@ -1,0 +1,103 @@
+﻿@using FreakyFashion.Entities
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] | FreakyFashion</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Special+Elite&display=swap" />
+
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <div class="col">
+                    <a class="navbar-brand" asp-area="" asp-page="/Index">
+                        <img width="100" height="100" src="/logo/logo.png" alt="FreakyFashion" class="float-left" />
+                    </a>
+                        <ul class="navbar-nav flex-grow-1 mb-4 mt-0">
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="Category" asp-route-name="Tröjor">Tröjor&nbsp;&nbsp;|</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="Category" asp-route-name="Rea"><span class="red">Rea</span>&nbsp;&nbsp;|</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="Category" asp-route-name="Klänningar">Klänningar&nbsp;&nbsp;|</a>
+                            </li> 
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-page="Category" asp-route-name="Jackor">Jackor&nbsp;&nbsp;|</a>
+                            </li>
+                            <li class="nav-item mr-4">  
+                                <a class="nav-link text-dark" asp-page="Category" asp-route-name="Jeans">Jeans&nbsp;&nbsp;</a>
+                            </li>
+                        </ul>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-brand nav">
+                        <li class="nav-item">
+                            <a asp-page="Basket"><i class="fa fa-shopping-cart" aria-hidden="true" id="shopping-cart"></i></a>
+                        </li>
+                    </ul>
+                    <partial name="_LoginPartial" />
+                    <ul class="navbar-nav flex-grow-1">
+                        <li>
+                            <form class="form-inline" asp-page="Search" method="get">
+                                <input class="form-control mr-sm-2 search" type="search" name="q" placeholder="Sök produkt.." autocomplete="off">
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <div id="footer-line"></div>
+    <footer class="page-footer font-small pt-4">
+        <div class="container-fluid text-center text-md-left">
+            <div class="row">
+                <div class="col-md-12 mt-md-0 mt-3 text-center">
+                    <p class="d-inline p-2 h5">
+                        <i class="fa fa-globe"></i>
+                        Gratis frakt och returer
+                    </p>
+                    <p class="d-inline p-5 h5">
+                        <i class="fa fa-fighter-jet"></i>
+                        Expressfrakt
+                    </p>
+                    <p class="d-inline p-5 h5">
+                        <i class="fa fa-credit-card"></i>
+                        Säkra betalningar
+                    </p>
+                    <p class="d-inline p-5 h5">
+                        <i class="fa fa-heart"></i>
+                        Nyheter varje dag
+                    </p>
+                </div>
+               <vc:category-list></vc:category-list>
+            </div>
+        </div>
+        <div class="footer-copyright text-center" id="copyright-container">
+            ©2020 FreakyFashion AB
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

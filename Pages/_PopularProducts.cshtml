@@ -1,0 +1,39 @@
+﻿@using FreakyFashion.Entities
+@model List<Product>
+
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+</head>
+<body>
+    <header>
+        <h2 class="text-center m-3">Populära produkter</h2>
+    </header>
+    <main>
+        <div class="row">
+            @foreach (var product in Model.Skip(4).Take(8))
+            {
+                <div class="col-md-3 mb-3 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="view">
+                            <a asp-page="/Product" asp-route-urlSlug="@product.UrlSlug">
+                                <img src="@product.ImageUrl" class="card-img-top"
+                                     alt="@product.Name" style="max-height:320px;">
+                            </a>
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+
+                        <div class="card-body">
+                            <h4 class="card-title">@product.Name</h4>
+                            <p class="card-text">@product.Price SEK</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </main>
+</body>
+</html>

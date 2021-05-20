@@ -1,0 +1,67 @@
+﻿@page
+@model FreakyFashion.Areas.Admin.Pages.Products.IndexModel
+@{
+    ViewData["Title"] = "Produkter";
+}
+
+
+<div class="row">
+    <div class="col mt-3">
+        <a asp-area="Admin" asp-page="/Products/New" class="btn btn-primary float-right mb-3 nice-color">Lägg till</a>
+        <h3 class="text-center">Produkter</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table table-hover" id="table">
+            <caption class="text-center">@Model.Product.Count() produkt(er)</caption>
+            <thead class="thead-dark">
+                <tr>
+                    <th>Art.nr</th>
+                    <th>Produkt</th>
+                    <th>Kategorier</th>
+                    <th>Pris (SEK)</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Product)
+                {
+                <tr>
+                    <td>@product.ArticleNumber</td>
+                    <td>@product.Name</td>
+                    <td>
+                    @foreach (var category in product.ProductCategory)
+                    {
+                       @category.Category.Name
+                    }
+                        </td>
+                    <td>@product.Price</td>
+                    <td><a asp-area="Admin" asp-page="/Products/Details" asp-route-id="@product.Id"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                    <td><a asp-area="Admin" asp-page="/Products/Edit" asp-route-id="@product.Id"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a asp-area="Admin" asp-page="/Products/Delete" asp-route-id="@product.Id"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        @{
+            var prevHidden = !Model.Product.HasPreviousPage ? "d-none" : "";
+            var nextHidden = !Model.Product.HasNextPage ? "d-none" : "";
+        }
+
+        <a asp-page="./Index"
+           asp-route-pageIndex="@(Model.Product.PageIndex - 1)"
+           class="btn btn-primary @prevHidden pull-left">
+            Föregående
+        </a>
+        <a asp-page="./Index"
+           asp-route-pageIndex="@(Model.Product.PageIndex + 1)"
+           class="btn btn-primary @nextHidden pull-right">
+            Nästa
+        </a>
+    </div>
+</div>
+
+

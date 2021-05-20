@@ -1,0 +1,39 @@
+﻿@page "{name}"
+@model CategoryModel
+@{
+    ViewData["Title"] = Model.Category.Name;
+}
+
+<h1 class="text-center">@Model.Category.Name</h1>
+<div class="row">
+    @if (Model.Category.ProductCategory.Count == 0)
+    {   <div class="col">
+            <h5 class="text-center">Tyvärr finns det inga produkter för tillfället.</h5>
+        </div>   
+    }
+    else
+    {
+        @foreach (var item in Model.Categories)
+        {
+            @foreach (var product in item.ProductCategory.Where(x => x.Category.Name == Model.Category.Name).Take(8))
+            {
+                <div class="col-md-3 mb-3 d-flex align-items-stretch">
+                    <div class="card">
+                        <div class="view">
+                            <a asp-page="/Product" asp-route-urlSlug="@product.Product.UrlSlug">
+                                <img src="@product.Product.ImageUrl" class="card-img-top"
+                                     alt="@product.Product.Name" style="max-height:320px;">
+                            </a>
+                            <div class="mask rgba-white-slight"></div>
+                        </div>
+
+                        <div class="card-body">
+                            <h4 class="card-title">@product.Product.Name</h4>
+                            <p class="card-text">@product.Product.Price SEK</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    }
+</div>

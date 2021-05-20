@@ -1,0 +1,57 @@
+﻿@page
+@model FreakyFashion.Areas.Admin.Pages.Categories.IndexModel
+@{
+    ViewData["Title"] = "Kategorier";
+}
+
+
+<div class="row">
+    <div class="col mt-3">
+        <a asp-area="Admin" asp-page="/Categories/New" class="btn btn-primary float-right mb-3 nice-color">Lägg till</a>
+        <h3 class="text-center">Kategorier</h3>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <table class="table table-hover" id="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Namn</th>
+                    <th>Antal produkter</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var category in Model.Category)
+                {
+                <tr>
+                    <td>@category.Name</td>
+                    <td>@category.ProductCategory.Count()</td>
+                    <td><a asp-area="Admin" asp-page="/Categories/Details" asp-route-id="@category.Id"><i class="fa fa-info-circle" aria-hidden="true"></i></a></td>
+                    <td><a asp-area="Admin" asp-page="/Categories/Edit" asp-route-id="@category.Id"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                    <td><a asp-area="Admin" asp-page="/Categories/Delete" asp-route-id="@category.Id"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
+                </tr>
+                }
+            </tbody>
+        </table>
+        @{
+            var prevHidden = !Model.Category.HasPreviousPage ? "d-none" : "";
+            var nextHidden = !Model.Category.HasNextPage ? "d-none" : "";
+        }
+
+        <a asp-page="./Index"
+           asp-route-pageIndex="@(Model.Category.PageIndex - 1)"
+           class="btn btn-primary @prevHidden pull-left">
+            Föregående
+        </a>
+        <a asp-page="./Index"
+           asp-route-pageIndex="@(Model.Category.PageIndex + 1)"
+           class="btn btn-primary @nextHidden pull-right">
+            Nästa
+        </a>
+    </div>
+</div>
+
+

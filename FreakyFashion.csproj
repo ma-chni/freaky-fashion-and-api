@@ -1,0 +1,64 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-FreakyFashion-2460796B-9B13-4342-B104-B8CAFFB9FE56</UserSecretsId>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <None Remove="app.db" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.1">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.1" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="3.1.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="Areas\Admin\" />
+    <Folder Include="Areas\Admin\Pages\" />
+    <Folder Include="Areas\Admin\Pages\Products\" />
+    <Folder Include="Areas\Admin\Pages\Shared\" />
+    <Folder Include="Areas\Admin\Pages\Categories\" />
+    <Folder Include="ViewComponents\" />
+    <Folder Include="Pages\Shared\Components\" />
+    <Folder Include="Pages\Shared\Components\RecommendedProducts\" />
+    <Folder Include="TagHelpers\" />
+    <Folder Include="Areas\Admin\Pages\Orders\" />
+    <Folder Include="Pages\Shared\Components\CategoryList\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Areas\Identity\Pages\Admin\Pages\Categories\Delete.cshtml" />
+    <Content Remove="Areas\Identity\Pages\Admin\Pages\Categories\Details.cshtml" />
+    <Content Remove="Areas\Identity\Pages\Admin\Pages\Categories\Edit.cshtml" />
+    <Content Remove="Areas\Identity\Admin\Pages\Categories\Delete.cshtml" />
+    <Content Remove="Areas\Identity\Admin\Pages\Categories\Details.cshtml" />
+    <Content Remove="Areas\Identity\Admin\Pages\Categories\Edit.cshtml" />
+    <Content Remove="Areas\Identity\Admin\Pages\Categories\Index.cshtml" />
+    <Content Remove="Areas\Identity\Admin\Pages\Index.cshtml" />
+    <Content Remove="wwwroot\img\bag2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Entities\Categories.cs" />
+    <Compile Remove="Entities\ProductsCategories.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Condition="'$(ExcludeConfigFilesFromBuildOutput)'=='true'" Update="Properties %28copy%29\launchSettings.json">
+      <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,23 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreakyFashion", "FreakyFashion.csproj", "{51C60819-C52A-47D8-954D-A32E8420C022}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FreakyFashion.API", "..\FreakyFashion.API\FreakyFashion.API.csproj", "{D4ACAA28-9F40-420B-BBBF-D52AAAB6D8A8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51C60819-C52A-47D8-954D-A32E8420C022}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51C60819-C52A-47D8-954D-A32E8420C022}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51C60819-C52A-47D8-954D-A32E8420C022}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51C60819-C52A-47D8-954D-A32E8420C022}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4ACAA28-9F40-420B-BBBF-D52AAAB6D8A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4ACAA28-9F40-420B-BBBF-D52AAAB6D8A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4ACAA28-9F40-420B-BBBF-D52AAAB6D8A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4ACAA28-9F40-420B-BBBF-D52AAAB6D8A8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

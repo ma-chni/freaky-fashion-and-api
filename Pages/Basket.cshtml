@@ -1,0 +1,75 @@
+﻿@page
+@using Microsoft.AspNetCore.Http
+@model BasketModel
+@{
+    ViewData["Title"] = "Varukorg";
+    var qty = 1;
+}
+
+    <div class="px-4 px-lg-0">
+        <div class="container text-white py-5 text-center">
+            <h1 class="display-4" style="color:black;">Varukorg</h1>
+        </div>
+        @if (Model.Products.Count() == 0)
+        {
+            <div class="col">
+                <h3 class="text-center">Din varukorg är tom!</h3>
+            </div>
+        } 
+        else
+        {
+            <div class="pb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12 p-5 bg-white rounded shadow-sm mb-5">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col" class="border-0 bg-light">
+                                            </th>
+                                            <th scope="col" class="border-0 bg-light">
+                                                <div class="py-2 text-uppercase">Pris</div>
+                                            </th>
+                                            <th scope="col" class="border-0 bg-light">
+                                                <div class="py-2 text-uppercase">Antal</div>
+                                            </th>
+                                            <th scope="col" class="border-0 bg-light">
+                                                <div class="py-2 text-uppercase">Totalt</div>
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var product in Model.Products)
+                                        {
+                                            <tr>
+                                                <th scope="row" class="border-0">
+                                                    <div class="p-2">
+                                                        <img src="@product.ImageUrl" alt="" width="70" class="img-fluid rounded shadow-sm">
+                                                        <div class="ml-3 d-inline-block align-middle">
+                                                            <h5 class="mb-0"> <a asp-page="Product" asp-route-urlSlug="@product.UrlSlug" class="text-dark d-inline-block align-middle">@product.Name</a></h5><span class="text-muted font-weight-normal font-italic d-block">Art.nr: @product.ArticleNumber</span>
+                                                        </div>
+                                                    </div>
+                                                </th>
+                                                <td class="border-0 align-middle">@product.Price kr</td>
+                                                <td class="border-0 align-middle"><input type="number" id="quantity" name="quantity" min="1" max="10" value="@qty"></td>
+                                                <td class="border-0 align-middle">@(qty * product.Price) kr</td>
+                                            </tr>
+                                        }
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <form method="post" class="mx-auto">
+                            <input type="hidden" asp-for="Product.Id" />
+                            <a class="btn btn-primary" asp-page="Checkout">Fortsätt till kassan</a>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
